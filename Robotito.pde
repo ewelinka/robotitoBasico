@@ -1,7 +1,7 @@
 class Robotito { //<>//
   int size, ypos, xpos, speed, directionX, directionY, activeDirection, currentRotation;
   color lastColor;
-  boolean isSelected, shouldRotate;
+  boolean isSelected;
   Look look;
   Robotito (int x, int y) {
     xpos = x;
@@ -13,7 +13,6 @@ class Robotito { //<>//
     directionX = directionY = activeDirection = 0;
     lastColor = white;
     isSelected = false;
-    shouldRotate = false;
   }
   void update() {
     xpos += speed*directionX;
@@ -34,7 +33,7 @@ class Robotito { //<>//
   }
   
   void checkRotation(){
-    if(shouldRotate){
+    if(taskSolved){
       currentRotation +=1;
     }
     currentRotation = currentRotation%360;
@@ -116,7 +115,7 @@ class Robotito { //<>//
         directionY = 0;
         directionX = 0;
         activeDirection = 5;
-        shouldRotate = true;
+        taskSolved = true;
       }
     }
     ignoredId = id;

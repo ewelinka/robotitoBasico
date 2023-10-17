@@ -67,7 +67,7 @@ class Look {
       drawArc(270, yellow);
       break;
     case 5: // violet
-      drawSmile();
+      drawAllViolet();
       break;
     }
   }
@@ -107,6 +107,17 @@ class Look {
     circle(0, 0, ledSize);
     popMatrix();
   }
+  void drawAllViolet() {
+    for (int i=0; i<24; i++) {
+      pushMatrix();
+      rotate(radians(i*360/24));
+      translate(0, -ledDistance);
+      fill(violet);
+      stroke(strokeColor);
+      circle(0, 0, ledSize);
+      popMatrix();
+    }
+  }
 
   void drawSmile() {
     pushMatrix();
@@ -129,5 +140,4 @@ class Look {
       popMatrix();
     }
   }
- 
 }
