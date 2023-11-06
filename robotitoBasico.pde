@@ -115,7 +115,7 @@ void newGame() {
   Pair violetXY = getXYFromIds(zoneBox.x, zoneBox.y);
 
   for (Card currentCard : allCards) {
-    if (currentCard.id == 5) { // violet!
+    if (currentCard.cardColor == violet) { // violet!
       currentCard.updatePosition(violetXY.x, violetXY.y);
     }
   }

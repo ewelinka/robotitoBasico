@@ -52,6 +52,39 @@ class Look {
     // CENTER MODE!!
     rect(0, 0-(aSize-triangleSize)/2, triangleSize/2, (aSize-triangleSize));
   }
+  
+  void draw4lights() {
+    // 4 lights
+    // green light
+    pushMatrix();
+    translate(0, -ledDistance);
+    fill(green);
+    stroke(strokeColor);
+    circle(0, 0, ledSize);
+    popMatrix();
+    // red light
+    pushMatrix();
+    rotate(radians(180));
+    translate(0, -ledDistance);
+    fill(red);
+    circle(0, 0, ledSize);
+    popMatrix();
+    //yellow
+    pushMatrix();
+    rotate(radians(270));
+    translate(0, -ledDistance);
+    fill(yellow);
+    circle(0, 0, ledSize);
+    popMatrix();
+    //blue
+    pushMatrix();
+    rotate(radians(90));
+    translate(0, -ledDistance);
+    fill(blue);
+    circle(0, 0, ledSize);
+    popMatrix();
+  }
+  
   void drawDirectionLights(int activeDirection) {
     switch(activeDirection) {
     case 1: // green
