@@ -3,6 +3,8 @@ Robotito robotito; //<>//
 color cardColor, yellow, blue, green, red, violet, white, markerColor, strokeColor;
 int cardSize, initPixelMat, inBoxMargin, maxPixelMat, lastSelectedZoneForViolet;
 boolean puttingCards, stopRobot, taskSolved;
+int blinkingTime;
+int blinkingPeriod;
 int offsetSensing;
 int strokeThickness;
 
@@ -43,6 +45,8 @@ void setup() {
   puttingCards = true;
   stopRobot = false;
   taskSolved = false;
+  blinkingTime = 120;
+  blinkingPeriod = 120;
   offsetSensing = cardSize/2;
   ignoredId = 0;
   strokeThickness = 4;

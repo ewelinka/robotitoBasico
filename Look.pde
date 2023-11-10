@@ -12,6 +12,13 @@ class Look {
     colorRobotito = #FCB603;
   }
 
+  void updateBlinking() {
+    blinkingTime++;
+    if (blinkingTime > blinkingPeriod) {
+      stopRobot = false;
+    }
+  }
+
   void drawArrows() {
     strokeWeight(1);
     noStroke();
@@ -52,7 +59,7 @@ class Look {
     // CENTER MODE!!
     rect(0, 0-(aSize-triangleSize)/2, triangleSize/2, (aSize-triangleSize));
   }
-  
+
   void draw4lights() {
     // 4 lights
     // green light
@@ -84,7 +91,7 @@ class Look {
     circle(0, 0, ledSize);
     popMatrix();
   }
-  
+
   void drawDirectionLights(int activeDirection) {
     switch(activeDirection) {
     case 1: // green

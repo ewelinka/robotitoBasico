@@ -18,7 +18,7 @@ class Robotito { //<>//
     xpos += speed*directionX;
     ypos += speed*directionY;
     checkRotation();
-    checkRobotitoPosition(); // updates posistions and directions if necessary 
+    checkRobotitoPosition(); // updates posistions and directions if necessary
     // calculate offset necesary to change direction in the middle of the card depending direction
     int offsetX = directionX*offsetSensing*-1;
     int offsetY = directionY*offsetSensing*-1;
@@ -31,9 +31,9 @@ class Robotito { //<>//
       }
     }
   }
-  
-  void checkRotation(){
-    if(taskSolved){
+
+  void checkRotation() {
+    if (taskSolved) {
       currentRotation +=1;
     }
     currentRotation = currentRotation%360;
@@ -62,6 +62,7 @@ class Robotito { //<>//
     rotate(radians(currentRotation));
     look.draw4lights();
     look.drawArrows();
+    look.updateBlinking();
     look.drawDirectionLights(activeDirection);
   }
 
@@ -95,27 +96,31 @@ class Robotito { //<>//
 
   void processColorAndId(color currentColor, int id) {
     if (currentColor == green || currentColor == yellow || currentColor == red || currentColor == blue || currentColor == violet) {
-      if (currentColor == green) {
-        directionY = -1;
-        directionX = 0;
-        activeDirection = 1;
-      } else if (currentColor == blue) {
-        directionY = 0;
-        directionX = 1;
-        activeDirection = 2;
-      } else if (currentColor == red) {
-        directionY = 1;
-        directionX = 0;
-        activeDirection = 3;
-      } else if (currentColor == yellow) {
-        directionY = 0;
-        directionX = -1;
-        activeDirection = 4;
-      } else if (currentColor == violet) {
+      if (currentColor == violet) {
         directionY = 0;
         directionX = 0;
         activeDirection = 5;
         taskSolved = true;
+      } else {
+        blinkingTime = 0;
+        stopRobot = true;
+        if (currentColor == green) {
+          directionY = -1;
+          directionX = 0;
+          activeDirection = 1;
+        } else if (currentColor == blue) {
+          directionY = 0;
+          directionX = 1;
+          activeDirection = 2;
+        } else if (currentColor == red) {
+          directionY = 1;
+          directionX = 0;
+          activeDirection = 3;
+        } else if (currentColor == yellow) {
+          directionY = 0;
+          directionX = -1;
+          activeDirection = 4;
+        }
       }
     }
     ignoredId = id;
@@ -129,8 +134,14 @@ class Robotito { //<>//
     xpos = x;
     ypos = y;
   }
-  
-  void setRotation(int ro){
+
+  void setRotation(int ro) {
     currentRotation = ro;
+  }
+
+
+  boolean shouldShowLights() {
+    boolean shouldShow = blinkingTime < blinkingPeriod/2 || blinkingTime > blinkingPeriod;
+    return shouldShow;
   }
 }
