@@ -60,7 +60,7 @@ class Robotito { //<>//
     //circle(xpos+offsetX, ypos+offsetY, 10); // debugging sensing position
     translate(xpos, ypos);
     rotate(radians(currentRotation));
-    //look.draw4lights();
+    look.draw4lights();
     look.drawArrows();
     look.drawDirectionLights(activeDirection);
   }
