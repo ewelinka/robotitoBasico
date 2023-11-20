@@ -139,9 +139,4 @@ class Robotito { //<>//
     currentRotation = ro;
   }
 
-
-  boolean shouldShowLights() {
-    boolean shouldShow = blinkingTime < blinkingPeriod/2 || blinkingTime > blinkingPeriod;
-    return shouldShow;
-  }
 }

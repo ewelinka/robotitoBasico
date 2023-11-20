@@ -93,22 +93,25 @@ class Look {
   }
 
   void drawDirectionLights(int activeDirection) {
-    switch(activeDirection) {
-    case 1: // green
-      drawArc(0, green);
-      break;
-    case 2: // blue
-      drawArc(90, blue);
-      break;
-    case 3: // red
-      drawArc(180, red);
-      break;
-    case 4: // yellow
-      drawArc(270, yellow);
-      break;
-    case 5: // violet
-      drawAllViolet();
-      break;
+    boolean showLights = shouldShowLights();
+    if (showLights) {
+      switch(activeDirection) {
+      case 1: // green
+        drawArc(0, green);
+        break;
+      case 2: // blue
+        drawArc(90, blue);
+        break;
+      case 3: // red
+        drawArc(180, red);
+        break;
+      case 4: // yellow
+        drawArc(270, yellow);
+        break;
+      case 5: // violet
+        drawAllViolet();
+        break;
+      }
     }
   }
 
@@ -179,5 +182,10 @@ class Look {
       circle(0, 0, ledSize);
       popMatrix();
     }
+  }
+
+  boolean shouldShowLights() {
+    boolean shouldShow = blinkingTime < blinkingPeriod/2 || blinkingTime > blinkingPeriod;
+    return shouldShow;
   }
 }
